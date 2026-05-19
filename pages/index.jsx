@@ -147,13 +147,13 @@ Burek — $9/slice or $45 whole — flaky phyllo, spinach and cheese
 DESSERT — ask server for today's special`;
 
 const STYLE_OPTIONS = [
-  { id: "white",    label: "White",                icon: "🥂", color: "#B45309" },
-  { id: "red",      label: "Red",                  icon: "🍷", color: "#991B1B" },
-  { id: "orange",   label: "Orange / Skin-Contact",icon: "🫙", color: "#C2410C" },
-  { id: "rosé",     label: "Rosé",                 icon: "🌸", color: "#BE185D" },
-  { id: "sparkling",label: "Sparkling / Pét-Nat",  icon: "✨", color: "#0369A1" },
-  { id: "dessert",  label: "Dessert / Fortified",  icon: "🍯", color: "#7C3AED" },
-  { id: "surprise", label: "Surprise me",          icon: "🎲", color: "#475569" },
+  { id: "white",    label: "White",                    color: "#B45309" },
+  { id: "red",      label: "Red",                      color: "#991B1B" },
+  { id: "orange",   label: "Amber (Skin-Contact)",     color: "#C2410C" },
+  { id: "rosé",     label: "Rosé",                     color: "#BE185D" },
+  { id: "sparkling",label: "Sparkling",                color: "#0369A1" },
+  { id: "dessert",  label: "Dessert & Fortified",      color: "#7C3AED" },
+  { id: "surprise", label: "Surprise me",              color: "#475569" },
 ];
 const PROFILE_OPTIONS = [
   { id: "dry-crisp",    label: "Dry & Crisp",             sub: "high acid, mineral, zippy" },
@@ -475,11 +475,11 @@ export default function App() {
 
       <ListStatusBanner status={listStatus} lastUpdated={lastUpdated} onRefresh={fetchWineLists} />
 
-      <Section label="What are you feeling?">
+      <Section label="What are you in the mood for?">
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {STYLE_OPTIONS.map(s => {
             const active = selectedStyles.includes(s.id);
-            return <button key={s.id} onClick={() => toggleStyle(s.id)} style={{ padding: "10px 18px", fontSize: 14, borderRadius: 999, cursor: "pointer", border: "none", background: active ? s.color : "var(--color-background-secondary)", color: active ? "#fff" : "var(--color-text-secondary)", fontWeight: active ? 700 : 400, boxShadow: active ? "0 3px 12px " + s.color + "55" : "none", transform: active ? "scale(1.06)" : "scale(1)", transition: "all 0.15s" }}>{active ? "✓ " : ""}{s.icon} {s.label}</button>;
+            return <button key={s.id} onClick={() => toggleStyle(s.id)} style={{ padding: "10px 18px", fontSize: 14, borderRadius: 999, cursor: "pointer", border: "none", background: active ? s.color : "var(--color-background-secondary)", color: active ? "#fff" : "var(--color-text-secondary)", fontWeight: active ? 700 : 400, boxShadow: active ? "0 3px 12px " + s.color + "55" : "none", transform: active ? "scale(1.06)" : "scale(1)", transition: "all 0.15s" }}>{active ? "✓ " : ""}{s.label}</button>;
           })}
         </div>
       </Section>
@@ -503,7 +503,7 @@ export default function App() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {VIBE_OPTIONS.map(v => {
             const active = selectedVibe === v.id;
-            return <button key={v.id} onClick={() => setSelectedVibe(v.id)} style={{ padding: "10px 18px", fontSize: 14, borderRadius: 999, cursor: "pointer", border: "none", background: active ? "var(--color-text-primary)" : "var(--color-background-secondary)", color: active ? "var(--color-background-primary)" : "var(--color-text-secondary)", fontWeight: active ? 700 : 400, transform: active ? "scale(1.06)" : "scale(1)", boxShadow: active ? "0 3px 12px rgba(0,0,0,0.18)" : "none", transition: "all 0.15s" }}>{active ? "✓ " : ""}{v.icon} {v.label}</button>;
+            return <button key={v.id} onClick={() => setSelectedVibe(v.id)} style={{ padding: "10px 18px", fontSize: 14, borderRadius: 999, cursor: "pointer", border: "none", background: active ? "var(--color-text-primary)" : "var(--color-background-secondary)", color: active ? "var(--color-background-primary)" : "var(--color-text-secondary)", fontWeight: active ? 700 : 400, transform: active ? "scale(1.06)" : "scale(1)", boxShadow: active ? "0 3px 12px rgba(0,0,0,0.18)" : "none", transition: "all 0.15s" }}>{active ? "✓ " : ""}{v.label}</button>;
           })}
         </div>
       </Section>
@@ -525,7 +525,7 @@ export default function App() {
       </Section>
 
       <button onClick={startChat} disabled={!canProceed} style={{ width: "100%", padding: "16px 0", fontSize: 16, fontWeight: 700, borderRadius: "var(--border-radius-lg)", background: canProceed ? "var(--color-text-primary)" : "var(--color-background-secondary)", color: canProceed ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: "none", cursor: canProceed ? "pointer" : "default", transition: "all 0.2s" }}>
-        {listStatus === "loading" ? "Loading wine list…" : canProceed ? "Ask the sommelier →" : "Complete your preferences above"}
+        {listStatus === "loading" ? "Loading wine list…" : canProceed ? "Ask the Qvevri Man →" : "Complete your preferences above"}
       </button>
       </div>
     </>
